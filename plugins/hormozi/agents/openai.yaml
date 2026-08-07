@@ -1,0 +1,8 @@
+interface:
+  display_name: "Hormozi Acquisition System"
+  short_description: "Offers, Leads, and Money Models — 54 chapters plus the cross-book diagnostic"
+  default_prompt: "Diagnose which growth constraint I'm on and tell me what to fix first"
+
+policy:
+  # Read-only knowledge skill — safe to auto-trigger on matching prompts.
+  allow_implicit_invocation: true
