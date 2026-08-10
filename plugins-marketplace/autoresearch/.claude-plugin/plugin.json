@@ -1,0 +1,8 @@
+{
+  "name": "autoresearch",
+  "description": "Autonomous improvement engine. 13 commands: iterate, plan, debug, fix, security, ship, scenario, predict, learn, reason, probe, improve, evals.",
+  "author": {
+    "name": "Udit Goenka",
+    "url": "https://github.com/uditgoenka"
+  }
+}
