@@ -1,8 +1,0 @@
-interface:
-  display_name: "$100M Money Models"
-  short_description: "Offer sequencing and 30-day cash recovery"
-  default_prompt: "Audit my money model and tell me which offer types I am missing"
-
-policy:
-  # Read-only knowledge skill — safe to auto-trigger on matching prompts.
-  allow_implicit_invocation: true

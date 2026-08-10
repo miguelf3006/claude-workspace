@@ -1,8 +1,0 @@
-interface:
-  display_name: "Hormozi Acquisition System"
-  short_description: "Router + synthesis across all three $100M books"
-  default_prompt: "Run the master diagnostic on my business and tell me which constraint I am actually on"
-
-policy:
-  # Read-only knowledge skill — safe to auto-trigger on matching prompts.
-  allow_implicit_invocation: true

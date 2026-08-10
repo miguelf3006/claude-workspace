@@ -1,8 +1,0 @@
-interface:
-  display_name: "$100M Offers"
-  short_description: "Offer design, pricing, guarantees, and naming"
-  default_prompt: "Walk me through building a grand slam offer for my business"
-
-policy:
-  # Read-only knowledge skill — safe to auto-trigger on matching prompts.
-  allow_implicit_invocation: true

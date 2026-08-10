@@ -1,8 +1,0 @@
-interface:
-  display_name: "$100M Leads"
-  short_description: "Core Four, lead magnets, outreach, ads, and lead getters"
-  default_prompt: "Diagnose my lead flow using the Core Four and LTGP:CAC"
-
-policy:
-  # Read-only knowledge skill — safe to auto-trigger on matching prompts.
-  allow_implicit_invocation: true
