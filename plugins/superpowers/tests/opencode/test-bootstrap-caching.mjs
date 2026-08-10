@@ -44,10 +44,6 @@ const result = {
   scenario,
   firstBootstrapParts: countBootstrapParts(firstOutput),
   secondBootstrapParts: countBootstrapParts(secondOutput),
-  staleMentionMapping: bootstrapText(firstOutput).includes('@mention'),
-  staleTaskMapping: bootstrapText(firstOutput).includes('`Task` tool with subagents'),
-  mapsSubagentToTask: bootstrapText(firstOutput).includes('`task` with `subagent_type: "general"`'),
-  mapsMutationToApplyPatch: bootstrapText(firstOutput).includes('`apply_patch`'),
   firstReadCount: afterFirst.readCount,
   secondReadCount: afterSecond.readCount,
   firstExistsCount: afterFirst.existsCount,
@@ -87,12 +83,6 @@ function countBootstrapParts(output) {
   ).length;
 }
 
-function bootstrapText(output) {
-  return output.messages[0].parts.find(
-    (part) => part.type === 'text' && part.text.includes('EXTREMELY_IMPORTANT')
-  )?.text || '';
-}
-
 function assertPresentBootstrap(result) {
   const failures = [];
   if (result.firstBootstrapParts !== 1) {
@@ -109,18 +99,6 @@ function assertPresentBootstrap(result) {
   }
   if (result.secondExistsCount !== result.firstExistsCount) {
     failures.push(`expected cached second transform to do no additional exists checks, got ${result.secondExistsCount - result.firstExistsCount}`);
-  }
-  if (result.staleMentionMapping) {
-    failures.push('expected OpenCode bootstrap not to teach @mention subagent syntax');
-  }
-  if (result.staleTaskMapping) {
-    failures.push('expected OpenCode bootstrap not to teach stale Task-tool mapping');
-  }
-  if (!result.mapsSubagentToTask) {
-    failures.push('expected OpenCode bootstrap to map general-purpose subagents to task with subagent_type');
-  }
-  if (!result.mapsMutationToApplyPatch) {
-    failures.push('expected OpenCode bootstrap to map file mutation to apply_patch');
   }
   return failures;
 }

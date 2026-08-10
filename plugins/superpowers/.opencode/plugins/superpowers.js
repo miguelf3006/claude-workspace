@@ -1,7 +1,7 @@
 /**
  * Superpowers plugin for OpenCode.ai
  *
- * Injects superpowers bootstrap context via message transform.
+ * Injects superpowers bootstrap context via system prompt transform.
  * Auto-registers skills directory via config hook (no symlinks needed).
  */
 
@@ -74,15 +74,11 @@ export const SuperpowersPlugin = async ({ client, directory }) => {
     const { content } = extractAndStripFrontmatter(fullContent);
 
     const toolMapping = `**Tool Mapping for OpenCode:**
-When skills request actions, substitute OpenCode equivalents:
-- Create or update todos → \`todowrite\`
-- \`Subagent (general-purpose):\` → \`task\` with \`subagent_type: "general"\`
-- Invoke a skill → OpenCode's native \`skill\` tool
-- Read files → \`read\`
-- Create, edit, or delete files → \`apply_patch\`
-- Run shell commands → \`bash\`
-- Search files → \`grep\`, \`glob\`
-- Fetch a URL → \`webfetch\`
+When skills reference tools you don't have, substitute OpenCode equivalents:
+- \`TodoWrite\` → \`todowrite\`
+- \`Task\` tool with subagents → Use OpenCode's subagent system (@mention)
+- \`Skill\` tool → OpenCode's native \`skill\` tool
+- \`Read\`, \`Write\`, \`Edit\`, \`Bash\` → Your native tools
 
 Use OpenCode's native \`skill\` tool to list and load skills.`;
 
